@@ -1,0 +1,49 @@
+### add department 
+POST http://localhost:3000/addDept
+Content-Type:application/json
+
+{
+    "name":"demo",
+    "location":"demo"
+}
+
+### show Depts
+GET http://localhost:3000/showDepts
+
+###Edit department
+PUT http://localhost:3000/updateDept/6ab4bd6dc3e32fbbd898b383
+Content-Type:application/json
+
+{
+    "name":"demo1",
+    "location":"demo1"
+}
+
+### delete department
+DELETE http://localhost:3000/deleteDept/6ab4bd6dc3e32fbbd898b383
+
+### add employee
+POST http://localhost:3000/addEmployee
+Content-Type:application/json
+
+{
+    "name":"Ahmed ramy",
+    "position":"computer scientist",
+    "department":"6ab4b7e36c1252e42922db9f"
+}
+
+### show employees
+GET http://localhost:3000/showEmployees
+
+###updateEmployee
+PUT http://localhost:3000/updateEmployee/6ab4bf7de748750b35234b6f
+Content-Type:application/json   
+
+{
+    "name":"Ahmed ramy2",
+    "position":"DB Engineer",
+    "department":"6ab31329b57c57f353a236c3"
+}
+
+#### delete employee
+DELETE http://localhost:3000/deleteEmployee/6ab4bf7de748750b35234b6f
