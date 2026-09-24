@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 
 const employeeRoutes = require('./routes/employeeRoutes.js');
 const departmentRoutes = require('./routes/departmentRoutes.js');
+const attendanceRoutes = require('./routes/attendanceRoutes.js');
 
 const app = express();
 app.use(express.json());
@@ -18,6 +19,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 app.use(employeeRoutes);
 app.use(departmentRoutes);
+app.use(attendanceRoutes);
 
 app.listen(3000, () => {
     console.log('server is running successfully on port 3000');

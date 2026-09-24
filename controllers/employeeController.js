@@ -25,6 +25,17 @@ const showEmployees = async (req, res) => {
     }
 };
 
+// Read one by id
+const getEmployeeById = async (req, res) => {
+    try {
+        const emp = await Employee.findById(req.params.id).populate('department');
+        if (!emp) return res.status(404).send({ message: 'Employee not found' });
+        res.status(200).json(emp);
+    } catch (error) {
+        res.status(400).send({ message: error.message });
+    }
+};
+
 // Update
 const updateEmployee = async (req, res) => {
     try {
@@ -51,4 +62,4 @@ const deleteEmployee = async (req, res) => {
     }
 };
 
-module.exports = { addEmployee, showEmployees, updateEmployee, deleteEmployee };
+module.exports = { addEmployee, showEmployees, getEmployeeById, updateEmployee, deleteEmployee };
