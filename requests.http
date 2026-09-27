@@ -61,7 +61,7 @@ Content-Type:application/json
 }
 
 #### show attendance
-GET http://localhost:3000/showAttendance
+GET http://localhost:3000/showAttendance?status=Absent
 
 
 
