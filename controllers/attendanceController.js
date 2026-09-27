@@ -42,4 +42,13 @@ const deleteAttendance=async(req,res)=>{
         res.status(400).send({message:error.message});
     }
 }
-module.exports={addAttendance,showAttendance,updateAttendance,deleteAttendance}
+const showAttendanceByEmployee=async(req,res)=>{
+    try {
+        const attendance=await Attendance.find({employee:req.params.employeeId}).populate('employee');
+        res.status(200).send(attendance);
+        
+    } catch (error) {
+        res.status(400).send({message:error.message});  
+    }
+}
+module.exports={addAttendance,showAttendance,updateAttendance,deleteAttendance,showAttendanceByEmployee}

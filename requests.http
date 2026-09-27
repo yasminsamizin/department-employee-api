@@ -55,8 +55,8 @@ POST http://localhost:3000/addAttendance
 Content-Type:application/json
 
 {
-     "employee":"6ab4ba166c1252e42922dba0",
-    "date":"2026-09-23",
+     "employee":"6ab4ba496c1252e42922dba1",
+    "date":"2026-09-27",
     "status":"Present"
 }
 
@@ -76,4 +76,7 @@ Content-Type:application/json
 }
 
 #### delete attendance
-DELETE http://localhost:3000/deleteAttendance/6ab4c0e1e748750b35234b70
+DELETE http://localhost:3000/deleteAttendance/6ab58eadac2dc676b9b9e356
+
+#### show attendance by employee
+GET http://localhost:3000/showAttendanceByEmployee/6ab4ba496c1252e42922dba1
