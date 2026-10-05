@@ -16,14 +16,13 @@ const addAttendance=async(req,res)=>{
 
 const showAttendance=async(req,res)=>{
     try{
-        if(!req.query.status){
-        const attendance=await Attendance.find().populate('employee');
+        const filter={};
+        if(req.query.status){
+            filter.status=req.query.status;
+        }
+        const attendance=await Attendance.find(filter).populate('employee');
         res.status(200).send(attendance);
-        }
-        else{
-            const attendance=await Attendance.find({status:req.query.status}).populate('employee');
-            res.status(200).send(attendance);
-        }
+        
     } catch(error){
         res.status(400).send({message:error.message});
     }

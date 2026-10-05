@@ -62,4 +62,36 @@ const deleteEmployee = async (req, res) => {
     }
 };
 
-module.exports = { addEmployee, showEmployees, getEmployeeById, updateEmployee, deleteEmployee };
+//show Employee names
+
+const showEmployeeNames = async (req, res) => {
+    try {
+        const emps = (await Employee.find()).map(emp=>emp.name);
+        const empset=new Set(emps);
+        res.status(200).json([...empset]);
+    } catch (error) {
+        res.status(500).send({ message: error.message });
+    }
+}
+const showHighsalaryEmployees = async (req, res) => {
+    try {
+        const salaryFilter =Number(req.query.salary)||5000;
+        const emps=(await Employee.find()).filter(emp=>emp.salary>salaryFilter).map(emp=>emp.name);
+        res.status(200).json(emps);
+    } catch (error) {
+        res.status(500).send({ message: error.message });
+    }
+}
+
+const getFirstHighEarner = async (req, res) => {
+    try {
+        const salaryFilter = Number(req.query.salary) || 5000;
+        const emp = (await Employee.find()).find(emp => emp.salary > salaryFilter);
+        if (!emp) return res.status(404).send({ message: 'No employee found with salary greater than ' + salaryFilter });
+        res.status(200).json(emp);
+        
+    } catch (error) {
+        res.status(500).send({ message: error.message });   
+    }
+}
+module.exports = { addEmployee, showEmployees, getEmployeeById, updateEmployee, deleteEmployee, showEmployeeNames, showHighsalaryEmployees, getFirstHighEarner };

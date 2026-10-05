@@ -5,12 +5,18 @@ const {
     showEmployees,
     getEmployeeById,
     updateEmployee,
-    deleteEmployee
+    deleteEmployee,
+    showEmployeeNames,
+    showHighsalaryEmployees,
+    getFirstHighEarner
 } = require('../controllers/employeeController.js');
 
 router.post('/addEmployee', addEmployee);
 router.get('/showEmployees', showEmployees);
 router.get('/employee/:id', getEmployeeById);
+router.get('/employeeNames', showEmployeeNames);
+router.get('/highSalaryEmployees', showHighsalaryEmployees);
+router.get('/firstHighEarner', getFirstHighEarner);
 router.put('/updateEmployee/:id', updateEmployee);
 router.delete('/deleteEmployee/:id', deleteEmployee);
 

@@ -38,17 +38,29 @@ GET http://localhost:3000/showEmployees
 GET http://localhost:3000/employee/6ab4bf7de748750b35234b6f
 
 ###updateEmployee
-PUT http://localhost:3000/updateEmployee/6ab4bf7de748750b35234b6f
+PUT http://localhost:3000/updateEmployee/6ab4ba166c1252e42922dba0
 Content-Type:application/json   
 
 {
-    "name":"Ahmed ramy2",
-    "salary":"6000",
+    "name":"John Doe",
+    "salary":"8000",
     "department":"6ab31329b57c57f353a236c3"
 }
 
 #### delete employee
 DELETE http://localhost:3000/deleteEmployee/6ab4bf7de748750b35234b6f
+
+
+###show high salary employees
+GET http://localhost:3000/highSalaryEmployees?salary=5000
+
+### firstHighEarner
+GET http://localhost:3000/firstHighEarner?salary=9000
+
+
+###Show employee names
+GET http://localhost:3000/employeeNames
+
 
 #### add attendance
 POST http://localhost:3000/addAttendance
@@ -80,3 +92,6 @@ DELETE http://localhost:3000/deleteAttendance/6ab58eadac2dc676b9b9e356
 
 #### show attendance by employee
 GET http://localhost:3000/showAttendanceByEmployee/6ab4ba496c1252e42922dba1
+
+### show employee names
+GET http://localhost:3000/employeeNames
