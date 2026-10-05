@@ -13,6 +13,8 @@ const attendanceRoutes = require('./routes/attendanceRoutes.js');
 const app = express();
 app.use(express.json());
 
+
+
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('connect successfully'))
     .catch((err) => console.log('Error happened', err));
@@ -20,6 +22,9 @@ mongoose.connect(process.env.MONGO_URI)
 app.use(employeeRoutes);
 app.use(departmentRoutes);
 app.use(attendanceRoutes);
+
+const errorMiddleware = require('./errorMiddleware.js');
+app.use(errorMiddleware);
 
 app.listen(3000, () => {
     console.log('server is running successfully on port 3000');

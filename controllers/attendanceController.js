@@ -1,6 +1,6 @@
 const Attendance=require('../models/attendance.js');
 //create
-const addAttendance=async(req,res)=>{
+const addAttendance=async(req,res,next)=>{
     try{
         const attendance=new  Attendance({
             employee:req.body.employee,
@@ -10,11 +10,11 @@ const addAttendance=async(req,res)=>{
         await attendance.save();
         res.status(201).send('Attendance added successfully')
     }   catch(error){
-        res.status(400).send({message:error.message})
+        next(error);
     }
   }
 
-const showAttendance=async(req,res)=>{
+const showAttendance=async(req,res,next)=>{
     try{
         const filter={};
         if(req.query.status){
@@ -24,10 +24,10 @@ const showAttendance=async(req,res)=>{
         res.status(200).send(attendance);
         
     } catch(error){
-        res.status(400).send({message:error.message});
+        next(error);
     }
 }
-const updateAttendance=async(req,res)=>{
+const updateAttendance=async(req,res,next)=>{
     try{
         const attendance=await Attendance.findByIdAndUpdate(req.params.id,{ 
             employee:req.body.employee,
@@ -36,24 +36,24 @@ const updateAttendance=async(req,res)=>{
         });
         res.status(200).send('Attendance updated successfully');
     } catch(error){
-        res.status(400).send({message:error.message});
+        next(error);
     }
 }
-const deleteAttendance=async(req,res)=>{
+const deleteAttendance=async(req,res,next)=>{
     try{
         const attendance=await Attendance.findByIdAndDelete(req.params.id); 
         res.status(200).send('Attendance deleted successfully');
     } catch(error){
-        res.status(400).send({message:error.message});
+        next(error);
     }
 }
-const showAttendanceByEmployee=async(req,res)=>{
+const showAttendanceByEmployee=async(req,res,next)=>{
     try {
         const attendance=await Attendance.find({employee:req.params.employeeId}).populate('employee');
         res.status(200).send(attendance);
         
     } catch (error) {
-        res.status(400).send({message:error.message});  
+        next(error);
     }
 }
 module.exports={addAttendance,showAttendance,updateAttendance,deleteAttendance,showAttendanceByEmployee}
