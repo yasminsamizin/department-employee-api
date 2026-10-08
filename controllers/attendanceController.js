@@ -1,7 +1,12 @@
-const Attendance=require('../models/attendance.js');
+const {validationResult}=require('express-validator');
+const Attendance=require('../models/Attendance.js');
 //create
 const addAttendance=async(req,res,next)=>{
     try{
+        const errors=validationResult(req);
+        if(!errors.isEmpty()){
+            return res.status(400).send({errors:errors.array()});
+        }
         const attendance=new  Attendance({
             employee:req.body.employee,
             date:req.body.date,
@@ -29,6 +34,10 @@ const showAttendance=async(req,res,next)=>{
 }
 const updateAttendance=async(req,res,next)=>{
     try{
+        const errors=validationResult(req);
+        if(!errors.isEmpty()){
+            return res.status(400).send({errors:errors.array()});
+        }
         const attendance=await Attendance.findByIdAndUpdate(req.params.id,{ 
             employee:req.body.employee,
             date:req.body.date,

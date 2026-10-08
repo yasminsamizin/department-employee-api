@@ -3,7 +3,7 @@ POST http://localhost:3000/addDept
 Content-Type:application/json
 
 {
-    "name":"demo",
+    
     "location":"demo"
 }
 
@@ -15,8 +15,8 @@ PUT http://localhost:3000/updateDept/6ab4bd6dc3e32fbbd898b383
 Content-Type:application/json
 
 {
-    "name":"demo1",
-    "location":"demo1"
+    
+    
 }
 
 ### delete department
@@ -67,8 +67,8 @@ Content-Type:application/json
 
 {
      "employee":"6ab4ba496c1252e42922dba1",
-    "date":"2026-09-27",
-    "status":"Present"
+    "date":"2026-09-27"
+   
 }
 
 #### show attendance
@@ -81,7 +81,7 @@ PUT http://localhost:3000/updateAttendance/6ab58eadac2dc676b9b9e356
 Content-Type:application/json       
 
 {
-    "employee":"6ab4ba166c1252e42922dba0",
+   
     "date":"2026-09-24",
     "status":"Absent"
 }

@@ -1,8 +1,14 @@
+const {validationResult} = require('express-validator');
 const Department = require('../models/Department.js');
 
 // Create
 const addDept = async (req, res,next) => {
     try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+
         const dept = new Department({
             name: req.body.name,
             location: req.body.location
@@ -27,6 +33,10 @@ const showDepts = async (req, res,next) => {
 // Update
 const updateDept = async (req, res,next) => {
     try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }   
         const dept = await Department.findByIdAndUpdate(req.params.id, {
             name: req.body.name,
             location: req.body.location
