@@ -35,7 +35,7 @@ Content-Type:application/json
 GET http://localhost:3000/showEmployees
 
 ### get employee by id
-GET http://localhost:3000/employee/6ab4bf7de748750b35234b6f
+GET http://localhost:3000/employee/6575
 
 ###updateEmployee
 PUT http://localhost:3000/updateEmployee/6ab4ba166c1252e42922dba0
@@ -43,8 +43,7 @@ Content-Type:application/json
 
 {
     "name":"John Doe",
-    "salary":"8000",
-    "department":"6ab31329b57c57f353a236c3"
+    "salary":"8000"
 }
 
 #### delete employee

@@ -1,8 +1,13 @@
+const { validationResult } = require('express-validator');
 const Employee = require('../models/Employee.js');
 
 // Create
 const addEmployee = async (req, res,next) => {
     try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
         const emp = new Employee({
             name: req.body.name,
             salary: req.body.salary,
@@ -39,6 +44,10 @@ const getEmployeeById = async (req, res,next) => {
 // Update
 const updateEmployee = async (req, res,next) => {
     try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
         const emp = await Employee.findByIdAndUpdate(req.params.id, {
             name: req.body.name,
             salary: req.body.salary,
