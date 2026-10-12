@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 const employeeRoutes = require('./routes/employeeRoutes.js');
 const departmentRoutes = require('./routes/departmentRoutes.js');
 const attendanceRoutes = require('./routes/attendanceRoutes.js');
+const projectRoutes = require('./routes/projectRoutes.js');
 
 const app = express();
 app.use(express.json());
@@ -22,6 +23,7 @@ mongoose.connect(process.env.MONGO_URI)
 app.use(employeeRoutes);
 app.use(departmentRoutes);
 app.use(attendanceRoutes);
+app.use(projectRoutes);
 
 const errorMiddleware = require('./errorMiddleware.js');
 app.use(errorMiddleware);

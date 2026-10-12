@@ -94,3 +94,15 @@ GET http://localhost:3000/showAttendanceByEmployee/6ab4ba496c1252e42922dba1
 
 ### show employee names
 GET http://localhost:3000/employeeNames
+
+###addproject
+POST http://localhost:3000/addProject
+Content-Type:application/json
+
+{
+    "title":"Project 1",
+    "employees":["6ab4ba166c1252e42922dba0","6ab4ba496c1252e42922dba1"]
+}
+
+### show projects
+GET http://localhost:3000/showProjects
