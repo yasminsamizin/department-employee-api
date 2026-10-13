@@ -54,7 +54,11 @@ DELETE http://localhost:3000/deleteEmployee/6ab4bf7de748750b35234b6f
 GET http://localhost:3000/highSalaryEmployees?salary=5000
 
 ### firstHighEarner
-GET http://localhost:3000/firstHighEarner?salary=9000
+GET http://localhost:3000/firstHighEarner?salary=5000
+
+
+###getFirstThreeHighestSalary
+GET http://localhost:3000/firstThreeHighestSalary
 
 
 ###Show employee names

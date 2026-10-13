@@ -8,7 +8,8 @@ const {
     deleteEmployee,
     showEmployeeNames,
     showHighsalaryEmployees,
-    getFirstHighEarner
+    getFirstHighEarner,
+    getFirstThreeHighestSalary
 } = require('../controllers/employeeController.js');
  const employeeRules=require('../validators/employeeValidator.js');
 
@@ -20,5 +21,6 @@ router.get('/highSalaryEmployees', showHighsalaryEmployees);
 router.get('/firstHighEarner', getFirstHighEarner);
 router.put('/updateEmployee/:id', employeeRules, updateEmployee);
 router.delete('/deleteEmployee/:id', deleteEmployee);
+router.get('/firstThreeHighestSalary', getFirstThreeHighestSalary);
 
 module.exports = router;

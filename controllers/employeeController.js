@@ -95,7 +95,7 @@ const showHighsalaryEmployees = async (req, res,next) => {
 const getFirstHighEarner = async (req, res,next) => {
     try {
         const salaryFilter = Number(req.query.salary) || 5000;
-        const emp = (await Employee.find()).find(emp => emp.salary > salaryFilter);
+        const emp = (await Employee.findOne({salary:{$gt:salaryFilter}}));
         if (!emp) return res.status(404).send({ message: 'No employee found with salary greater than ' + salaryFilter });
         res.status(200).json(emp);
         
@@ -103,4 +103,15 @@ const getFirstHighEarner = async (req, res,next) => {
         next(error);
     }
 }
-module.exports = { addEmployee, showEmployees, getEmployeeById, updateEmployee, deleteEmployee, showEmployeeNames, showHighsalaryEmployees, getFirstHighEarner };
+
+const getFirstThreeHighestSalary=async(req,res,next)=>{
+try {
+    const emps=(await Employee.find().sort({salary:-1}).limit(3)).map(emp=>({name:emp.name,salary:emp.salary}));
+    if(!emps) return res.status(404).send({ message: 'No employees found' });
+    res.status(200).json(emps);
+} catch (error) {
+    next(error);
+}
+}
+
+module.exports = { addEmployee, showEmployees, getEmployeeById, updateEmployee, deleteEmployee, showEmployeeNames, showHighsalaryEmployees, getFirstHighEarner, getFirstThreeHighestSalary };
