@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { Protect } = require('../authMiddleware.js');
 const {
     addEmployee,
     showEmployees,
@@ -14,7 +15,7 @@ const {
  const employeeRules=require('../validators/employeeValidator.js');
 
 router.post('/addEmployee', employeeRules, addEmployee);
-router.get('/showEmployees', showEmployees);
+router.get('/showEmployees', Protect, showEmployees);
 router.get('/employee/:id', getEmployeeById);
 router.get('/employeeNames', showEmployeeNames);
 router.get('/highSalaryEmployees', showHighsalaryEmployees);

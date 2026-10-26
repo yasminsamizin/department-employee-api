@@ -10,6 +10,7 @@ const employeeRoutes = require('./routes/employeeRoutes.js');
 const departmentRoutes = require('./routes/departmentRoutes.js');
 const attendanceRoutes = require('./routes/attendanceRoutes.js');
 const projectRoutes = require('./routes/projectRoutes.js');
+const authRoutes = require('./routes/authRoutes.js');
 
 const app = express();
 app.use(express.json());
@@ -24,6 +25,7 @@ app.use(employeeRoutes);
 app.use(departmentRoutes);
 app.use(attendanceRoutes);
 app.use(projectRoutes);
+app.use(authRoutes);
 
 const errorMiddleware = require('./errorMiddleware.js');
 app.use(errorMiddleware);
