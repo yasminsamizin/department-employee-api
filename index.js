@@ -30,6 +30,6 @@ app.use(authRoutes);
 const errorMiddleware = require('./errorMiddleware.js');
 app.use(errorMiddleware);
 
-app.listen(3000, () => {
-    console.log('server is running successfully on port 3000');
+app.listen(process.env.PORT || 3000, () => {
+    console.log('server is running successfully on port ' + (process.env.PORT || 3000));
 });
